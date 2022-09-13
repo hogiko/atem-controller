@@ -1,0 +1,19 @@
+application:
+  atem:
+    hostname: ${ATEM_HOSTNAME:10.47.11.81}
+    port: ${ATEM_PORT:9990}
+  debug: ${DEBUG:false}
+
+quarkus:
+
+  swagger-ui:
+    path: /apidocs
+    always-include: true
+
+  smallrye-openapi:
+    path: /openapi
+
+  http:
+    cors: true
+    host: 0.0.0.0
+    port: ${HTTP_PORT:8080}
