@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright by https://conxult.de
  */
 package de.conxult.tally.controller.atem;

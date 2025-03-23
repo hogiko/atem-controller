@@ -32,33 +32,33 @@ public class VideoOutputRoutingHandler
 
   @Override
   public void handleMessage(String key, String value) {
-    String name   = configuration.getInputLabels().get(value);
-    String output = configuration.getOutputLabels().get(key);
-    switch (key) {
-      case "1":
-        TallyLogger.info("SET %s %s: %s -> %s", key, value, name, output);
+    String output = configuration.getOutputLabel(key);
+    String input  = configuration.getInputLabel(value);
+    switch (output) {
+      case "Program":
+        TallyLogger.info("SET %s %s: %s -> %s", key, value, input, output);
         states.getTallyLights(TallyLightState.ON_AIR).forEach(tls -> {
           tls.setState(TallyLightState.BLACK);
           changeSet.add(tls.getName());
         });
-        states.getTallyLight(name).setState(TallyLightState.ON_AIR);
-        changeSet.add(name);
+        states.getTallyLight(input).setState(TallyLightState.ON_AIR);
+        changeSet.add(input);
         break;
 
-      case "2":
-        TallyLogger.info("SET %s %s: %s -> %s", key, value, name, output);
+      case "Preview":
+        TallyLogger.info("SET %s %s: %s -> %s", key, value, input, output);
         states.getTallyLights(TallyLightState.STAND_BY).forEach(tls -> {
           tls.setState(TallyLightState.BLACK);
           changeSet.add(tls.getName());
           });
-        if (!states.getTallyLight(name).isOnAir()) {
-          states.getTallyLight(name).setState(TallyLightState.STAND_BY);
-          changeSet.add(name);
+        if (!states.getTallyLight(input).isOnAir()) {
+          states.getTallyLight(input).setState(TallyLightState.STAND_BY);
+          changeSet.add(input);
         }
         break;
 
       default:
-        TallyLogger.info("IGN %s %s: %s -> %s", key, value, name, output);
+        TallyLogger.info("IGN %s %s: %s -> %s", key, value, input, output);
         break;
 
     }

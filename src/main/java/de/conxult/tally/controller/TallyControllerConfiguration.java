@@ -11,8 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
-import javax.annotation.PostConstruct;
-import javax.inject.Singleton;
+import jakarta.annotation.PostConstruct;
+import jakarta.inject.Singleton;
 import lombok.Getter;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 

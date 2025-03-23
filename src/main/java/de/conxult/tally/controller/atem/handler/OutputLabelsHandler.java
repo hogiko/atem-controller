@@ -23,7 +23,7 @@ public class OutputLabelsHandler
 
   @Override
   public void handleMessage(String key, String value) {
-    configuration.getOutputLabels().put(key, value);
+    configuration.setOutputLabel(key, value);
   }
 
 }

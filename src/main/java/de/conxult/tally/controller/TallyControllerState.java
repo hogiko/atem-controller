@@ -5,6 +5,7 @@ package de.conxult.tally.controller;
 
 import de.conxult.tally.controller.domain.TallyLightInfo;
 import de.conxult.tally.controller.domain.TallyLightState;
+import jakarta.inject.Singleton;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -14,7 +15,6 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
-import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;

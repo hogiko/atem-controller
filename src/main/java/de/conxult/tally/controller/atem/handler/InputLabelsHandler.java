@@ -23,7 +23,7 @@ public class InputLabelsHandler
 
   @Override
   public void handleMessage(String key, String value) {
-    configuration.getInputLabels().put(key, value);
+    configuration.setInputLabel(key, value);
   }
 
 }

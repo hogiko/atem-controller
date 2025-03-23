@@ -3,6 +3,7 @@
  */
 package de.conxult.tally.controller.atem.handler;
 
+import de.conxult.tally.controller.TallyLogger;
 import de.conxult.tally.controller.atem.AtemConfiguration;
 
 /**
@@ -18,4 +19,11 @@ public class UnknownHandler
     super(configuration);
     this.topic = topic;
   }
+
+    @Override
+    public void handleMessage(String message) {
+        TallyLogger.info("handleUnknown Line {0}", message);
+    }
+
+
 }

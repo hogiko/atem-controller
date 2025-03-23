@@ -2,10 +2,10 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <name>CX :: Atem Controller</name>
+  <name>CX :: Tally Controller</name>
 
   <groupId>de.conxult</groupId>
-  <artifactId>atem-controller</artifactId>
+  <artifactId>tally-controller</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
@@ -16,17 +16,22 @@
   <parent>
     <groupId>de.conxult</groupId>
     <artifactId>quarkus</artifactId>
-    <version>1.0.0</version>
+    <version>3.15.1</version>
   </parent>
 
   <dependencies>
     <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>      
+        
+    <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-jackson</artifactId>
+      <artifactId>quarkus-rest-jackson</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy</artifactId>
+      <artifactId>quarkus-rest</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>

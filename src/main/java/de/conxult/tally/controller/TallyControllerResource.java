@@ -1,19 +1,21 @@
 package de.conxult.tally.controller;
 
 import de.conxult.tally.controller.TallyControllerState.PendingCall;
+import de.conxult.tally.controller.atem.AtemConfiguration;
 import de.conxult.tally.controller.domain.TallyLightInfo;
+import io.vertx.ext.web.RoutingContext;
 import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.QueryParam;
 
 /*
  * Copyright by https://conxult.de
@@ -31,7 +33,7 @@ public class TallyControllerResource {
   TallyControllerState states;
 
   @Inject
-  HttpServletRequest request;
+  RoutingContext request;
 
   static Map<String, Date> lastRemoteStamps = new ConcurrentHashMap<>();
 
@@ -48,7 +50,7 @@ public class TallyControllerResource {
     @QueryParam("name")    String       name,
     @QueryParam("timeout") Integer      milliSeconds
   ) {
-    String         clientIdentifier = request.getRemoteAddr();
+    String         clientIdentifier = request.request().host();
     TallyLightInfo tallyLight       = states.getTallyLight(name);
 
     Date lastRemoteStamp = lastRemoteStamps.get(clientIdentifier);
